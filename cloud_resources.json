@@ -1,0 +1,49 @@
+[
+  {
+    "id": "vm-1",
+    "type": "vm",
+    "cpu": 2,
+    "memory": "4kb",
+    "region": "us-east-1"
+  },
+  {
+    "id": "vm-2",
+    "type": "vm",
+    "cpu": 4,
+    "memory": "8kb",
+    "region": "us-west-2"
+  },
+  {
+    "id": "db-1",
+    "type": "database",
+    "engine": "postgres",
+    "version": "14",
+    "storage": "100gb"
+  },
+  {
+    "id": "db-2",
+    "type": "database",
+    "engine": "mysql",
+    "version": "8",
+    "storage": "50gb"
+  },
+  {
+    "id": "storage-1",
+    "type": "storage",
+    "tier": "standard",
+    "encrypted": true
+  },
+  {
+    "id": "storage-2",
+    "type": "storage",
+    "tier": "premium",
+    "encrypted": false
+  },
+  {
+    "id": "vm-3",
+    "type": "vm",
+    "cpu": 2,
+    "memory": "4kb",
+    "region": "eu-central-1"
+  }
+]

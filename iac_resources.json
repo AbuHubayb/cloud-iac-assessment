@@ -1,0 +1,34 @@
+[
+  {
+    "id": "vm-1",
+    "type": "vm",
+    "cpu": 2,
+    "memory": "4kb",
+    "region": "us-east-1"
+  },
+  {
+    "id": "vm-2",
+    "type": "vm",
+    "cpu": 4,
+    "memory": "16kb",
+    "region": "us-west-2"
+  },
+  {
+    "id": "db-1",
+    "type": "database",
+    "engine": "postgres",
+    "version": "15",
+    "storage": "200gb"
+  },
+  {
+    "id": "storage-1",
+    "type": "storage",
+    "tier": "standard",
+    "encrypted": true
+  },
+  {
+    "id": "storage-2",
+    "type": "storage",
+    "tier": "premium"
+  }
+]
