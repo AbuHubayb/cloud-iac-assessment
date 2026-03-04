@@ -1,21 +1,16 @@
-# Pull LocalStack as base_image
-FROM localstack/localstack:2.2
+FROM localstack/localstack:2.3
 
-# Enable S3
+# Enable only S3
 ENV SERVICES=s3
 ENV DEBUG=1
 
-# Copy report into container
+# Copy analyzer report
 COPY report.json /tmp/report.json
 
-# Expose LocalStack port
-EXPOSE 4566
+# Copy init script to official ready hook directory
+COPY init-s3.sh /etc/localstack/init/ready.d/init-s3.sh
 
-# Start LocalStack, create bucket, upload report
-CMD ["bash", "-c", "\
-localstack start --host & \
-sleep 5 && \
-awslocal s3 mb s3://analyzer-reports && \
-awslocal s3 cp /tmp/report.json s3://analyzer-reports/report.json && \
-tail -f /dev/null \
-"]
+# Ensure executable permissions
+RUN chmod +x /etc/localstack/init/ready.d/init-s3.sh
+
+EXPOSE 4566
