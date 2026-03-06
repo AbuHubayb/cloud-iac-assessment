@@ -1,140 +1,186 @@
 [
-    {
-        "CloudResourceItem": {
-            "id": "vm-1",
-            "type": "vm",
-            "cpu": 3,
-            "memory": "4kb",
-            "region": "us-east-1"
-        },
-        "IacResourceItem": {
-            "id": "vm-1",
-            "type": "vm",
-            "cpu": 2,
-            "memory": "4kb",
-            "region": "us-east-1"
-        },
-        "State": "Modified",
-        "ChangeLog": [
-            {
-                "KeyName": "cpu",
-                "CloudValue": 3,
-                "IacValue": 2
-            }
+  {
+    "CloudResourceItem": {
+      "id": "vm-1",
+      "type": "vm",
+      "cpu": 2,
+      "memory": "4kb",
+      "region": "us-east-1",
+      "tags": {
+        "env": "prod",
+        "team": "devops"
+      },
+      "security_groups": [
+        "sg-1",
+        "sg-2"
+      ]
+    },
+    "IacResourceItem": {
+      "id": "vm-1",
+      "type": "vm",
+      "cpu": 2,
+      "memory": "4kb",
+      "region": "us-east-1",
+      "tags": {
+        "env": "production",
+        "team": "devops"
+      },
+      "security_groups": [
+        "sg-1",
+        "sg-3"
+      ]
+    },
+    "State": "Modified",
+    "ChangeLog": [
+      {
+        "KeyName": "security_groups",
+        "CloudValue": [
+          "sg-1",
+          "sg-2"
+        ],
+        "IacValue": [
+          "sg-1",
+          "sg-3"
         ]
+      },
+      {
+        "KeyName": "tags.env",
+        "CloudValue": "prod",
+        "IacValue": "production"
+      }
+    ]
+  },
+  {
+    "CloudResourceItem": {
+      "id": "vm-2",
+      "type": "vm",
+      "cpu": 4,
+      "memory": "8kb",
+      "region": "us-west-2",
+      "tags": {
+        "env": "staging"
+      }
     },
-    {
-        "CloudResourceItem": {
-            "id": "vm-2",
-            "type": "vm",
-            "cpu": 4,
-            "memory": "8kb",
-            "region": "us-west-2"
-        },
-        "IacResourceItem": {
-            "id": "vm-2",
-            "type": "vm",
-            "cpu": 4,
-            "memory": "16kb",
-            "region": "us-west-2"
-        },
-        "State": "Modified",
-        "ChangeLog": [
-            {
-                "KeyName": "memory",
-                "CloudValue": "8kb",
-                "IacValue": "16kb"
-            }
-        ]
+    "IacResourceItem": {
+      "id": "vm-2",
+      "type": "vm",
+      "cpu": 4,
+      "memory": "16kb",
+      "region": "us-west-2",
+      "tags": {
+        "env": "staging"
+      }
     },
-    {
-        "CloudResourceItem": {
-            "id": "db-1",
-            "type": "database",
-            "engine": "postgres",
-            "version": "14",
-            "storage": "100gb"
-        },
-        "IacResourceItem": {
-            "id": "db-1",
-            "type": "database",
-            "engine": "postgres",
-            "version": "15",
-            "storage": "200gb"
-        },
-        "State": "Modified",
-        "ChangeLog": [
-            {
-                "KeyName": "version",
-                "CloudValue": "14",
-                "IacValue": "15"
-            },
-            {
-                "KeyName": "storage",
-                "CloudValue": "100gb",
-                "IacValue": "200gb"
-            }
-        ]
+    "State": "Modified",
+    "ChangeLog": [
+      {
+        "KeyName": "memory",
+        "CloudValue": "8kb",
+        "IacValue": "16kb"
+      }
+    ]
+  },
+  {
+    "CloudResourceItem": {
+      "id": "db-1",
+      "type": "database",
+      "engine": "postgres",
+      "version": "14",
+      "storage": "100gb",
+      "config": {
+        "backup": true,
+        "replicas": 2
+      }
     },
-    {
-        "CloudResourceItem": {
-            "id": "db-2",
-            "type": "database",
-            "engine": "mysql",
-            "version": "8",
-            "storage": "50gb"
-        },
-        "IacResourceItem": null,
-        "State": "Missing",
-        "ChangeLog": []
+    "IacResourceItem": {
+      "id": "db-1",
+      "type": "database",
+      "engine": "postgres",
+      "version": "15",
+      "storage": "200gb",
+      "config": {
+        "backup": true,
+        "replicas": 3
+      }
     },
-    {
-        "CloudResourceItem": {
-            "id": "storage-1",
-            "type": "storage",
-            "tier": "standard",
-            "encrypted": true
-        },
-        "IacResourceItem": {
-            "id": "storage-1",
-            "type": "storage",
-            "tier": "standard",
-            "encrypted": true
-        },
-        "State": "Match",
-        "ChangeLog": []
+    "State": "Modified",
+    "ChangeLog": [
+      {
+        "KeyName": "version",
+        "CloudValue": "14",
+        "IacValue": "15"
+      },
+      {
+        "KeyName": "config.replicas",
+        "CloudValue": 2,
+        "IacValue": 3
+      },
+      {
+        "KeyName": "storage",
+        "CloudValue": "100gb",
+        "IacValue": "200gb"
+      }
+    ]
+  },
+  {
+    "CloudResourceItem": {
+      "id": "db-2",
+      "type": "database",
+      "engine": "mysql",
+      "version": "8",
+      "storage": "50gb"
     },
-    {
-        "CloudResourceItem": {
-            "id": "storage-2",
-            "type": "storage",
-            "tier": "premium",
-            "encrypted": false
-        },
-        "IacResourceItem": {
-            "id": "storage-2",
-            "type": "storage",
-            "tier": "premium"
-        },
-        "State": "Modified",
-        "ChangeLog": [
-            {
-                "KeyName": "encrypted",
-                "CloudValue": false,
-                "IacValue": null
-            }
-        ]
+    "IacResourceItem": null,
+    "State": "Missing",
+    "ChangeLog": []
+  },
+  {
+    "CloudResourceItem": {
+      "id": "storage-1",
+      "type": "storage",
+      "tier": "standard",
+      "encrypted": true
     },
-    {
-        "CloudResourceItem": {
-            "id": "vm-3",
-            "type": "vm",
-            "cpu": 2,
-            "memory": "4kb",
-            "region": "eu-central-1"
-        },
-        "IacResourceItem": null,
-        "State": "Missing",
-        "ChangeLog": []
-    }
+    "IacResourceItem": {
+      "id": "storage-1",
+      "type": "storage",
+      "tier": "standard",
+      "encrypted": true
+    },
+    "State": "Match",
+    "ChangeLog": []
+  },
+  {
+    "CloudResourceItem": {
+      "id": "storage-2",
+      "type": "storage",
+      "tier": "premium",
+      "encrypted": false
+    },
+    "IacResourceItem": {
+      "id": "storage-2",
+      "type": "storage",
+      "tier": "premium"
+    },
+    "State": "Modified",
+    "ChangeLog": [
+      {
+        "KeyName": "encrypted",
+        "CloudValue": false,
+        "IacValue": null
+      }
+    ]
+  },
+  {
+    "CloudResourceItem": {
+      "id": "vm-3",
+      "type": "vm",
+      "cpu": 2,
+      "memory": "4kb",
+      "region": "eu-central-1"
+    },
+    "IacResourceItem": null,
+    "State": "Missing",
+    "ChangeLog": []
+  }
 ]
