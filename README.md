@@ -180,9 +180,9 @@ pip install -r requirements.txt
 Example `requirements.txt`
 
 ```
-boto3==1.34.162
-pytest==8.3.5
-pytest-cov==5.0.0
+boto3
+pytest
+pytest-cov
 ```
 
 ---
@@ -249,3 +249,16 @@ test_main.py::test_modified PASSED
 test_main.py::test_nested_property PASSED
 test_main.py::test_array_property PASSED
 ```
+
+---
+
+# Error Handling
+
+The analyzer includes validation for:
+
+- Missing input files
+- Invalid JSON format
+- Missing required resource fields
+- Empty resource lists
+
+---
