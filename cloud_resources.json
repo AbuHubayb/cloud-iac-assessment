@@ -4,21 +4,33 @@
     "type": "vm",
     "cpu": 2,
     "memory": "4kb",
-    "region": "us-east-1"
+    "region": "us-east-1",
+    "tags": {
+      "env": "prod",
+      "team": "devops"
+    },
+    "security_groups": ["sg-1", "sg-2"]
   },
   {
     "id": "vm-2",
     "type": "vm",
     "cpu": 4,
     "memory": "8kb",
-    "region": "us-west-2"
+    "region": "us-west-2",
+    "tags": {
+      "env": "staging"
+    }
   },
   {
     "id": "db-1",
     "type": "database",
     "engine": "postgres",
     "version": "14",
-    "storage": "100gb"
+    "storage": "100gb",
+    "config": {
+      "backup": true,
+      "replicas": 2
+    }
   },
   {
     "id": "db-2",
