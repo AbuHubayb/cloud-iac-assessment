@@ -33,11 +33,6 @@
     "State": "Modified",
     "ChangeLog": [
       {
-        "KeyName": "tags.env",
-        "CloudValue": "prod",
-        "IacValue": "production"
-      },
-      {
         "KeyName": "security_groups",
         "CloudValue": [
           "sg-1",
@@ -47,6 +42,11 @@
           "sg-1",
           "sg-3"
         ]
+      },
+      {
+        "KeyName": "tags.env",
+        "CloudValue": "prod",
+        "IacValue": "production"
       }
     ]
   },
@@ -106,14 +106,14 @@
     "State": "Modified",
     "ChangeLog": [
       {
-        "KeyName": "config.replicas",
-        "CloudValue": 2,
-        "IacValue": 3
-      },
-      {
         "KeyName": "version",
         "CloudValue": "14",
         "IacValue": "15"
+      },
+      {
+        "KeyName": "config.replicas",
+        "CloudValue": 2,
+        "IacValue": 3
       },
       {
         "KeyName": "storage",
